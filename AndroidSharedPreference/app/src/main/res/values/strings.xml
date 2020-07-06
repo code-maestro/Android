@@ -9,7 +9,6 @@
     <string name="name">Name</string>
     <string name="clear">Clear</string>
     <string name="retrieve">Retrieve</string>
-    <string name="save">Save</string>
     <string name="home">Home</string>
     <string name="second_activity">Second Activity</string>
 </resources>
