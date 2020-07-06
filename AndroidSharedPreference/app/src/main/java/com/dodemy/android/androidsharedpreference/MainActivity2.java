@@ -11,13 +11,17 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Android stores Shared Preferences settings as XML file in shared_prefs folder under DATA/data/{application package} directory.
+ * The DATA folder can be obtained by calling Environment.getDataDirectory()
+ */
 public class MainActivity2 extends AppCompatActivity {
-    public static final String MY_PREFERENCE = "myPref";
+    //PREFERENCE_FILE_NAME is the name of the file where the shared preferences key-value pair is stored.
+    public static final String PREFERENCE_FILE_NAME = "myPref";
     public static final String NAME_KEY = "nameKey";
     public static final String EMAIL_KEY = "emailKey";
     SharedPreferences mSharedPreferences;
-    EditText mName;
-    EditText mEmail;
+    EditText mName, mEmail;
     Button mHome;
 
     @Override
@@ -27,14 +31,13 @@ public class MainActivity2 extends AppCompatActivity {
         mName = findViewById(R.id.etName);
         mEmail = findViewById(R.id.etEmail);
         mHome = findViewById(R.id.home);
-        mSharedPreferences = getSharedPreferences(MY_PREFERENCE, Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
         if (mSharedPreferences.contains(NAME_KEY)) {
             mName.setText(mSharedPreferences.getString(NAME_KEY, ""));
         }
         if (mSharedPreferences.contains(EMAIL_KEY)) {
             mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
         }
-
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +63,7 @@ public class MainActivity2 extends AppCompatActivity {
     public void Get(View view) {
         mName =  findViewById(R.id.etName);
         mEmail = findViewById(R.id.etEmail);
-        mSharedPreferences = getSharedPreferences(MY_PREFERENCE, Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
         if (mSharedPreferences.contains(NAME_KEY)) {
             mName.setText(mSharedPreferences.getString(NAME_KEY, ""));
         }
