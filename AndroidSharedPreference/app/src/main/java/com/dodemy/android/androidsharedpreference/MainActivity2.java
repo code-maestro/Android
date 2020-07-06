@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         mName = findViewById(R.id.etName);
         mEmail = findViewById(R.id.etEmail);
-        mHome = findViewById(R.id.activity2);
+        mHome = findViewById(R.id.home);
         mSharedPreferences = getSharedPreferences(MY_PREFERENCE, Context.MODE_PRIVATE);
         if (mSharedPreferences.contains(NAME_KEY)) {
             mName.setText(mSharedPreferences.getString(NAME_KEY, ""));
