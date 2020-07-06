@@ -77,7 +77,7 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
