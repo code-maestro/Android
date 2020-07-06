@@ -12,13 +12,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String My_PREFERENCES = "MyPref";
+    public static final String My_PREFERENCES_FILE = "MyPref";
     public static final String My_NAME = "nameKey";
     public static final String My_PHONE = "phoneKey";
     public static final String My_EMAIL = "emailKey";
     EditText personName, emailAddress, phoneNumber;
     Button saveButton, activity2;
-    SharedPreferences sharedpreferences;
+    SharedPreferences sharedPreferencesFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +29,12 @@ public class MainActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.phoneNumber);
         saveButton = findViewById(R.id.saveButton);
         activity2 = findViewById(R.id.activity2);
-        sharedpreferences = getSharedPreferences(My_PREFERENCES, Context.MODE_PRIVATE);
+        keepFieldsIntact();
+        saveIntoMyPreferenceFile();
+        secondActivity();
+    }
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String myName = personName.getText().toString();
-                String myEmail = emailAddress.getText().toString();
-                String myNumber = phoneNumber.getText().toString();
-
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(My_NAME, myName);
-                editor.putString(My_PHONE, myNumber);
-                editor.putString(My_EMAIL, myEmail);
-                editor.apply();
-                Toast.makeText(MainActivity.this, "Thanks", Toast.LENGTH_LONG).show();
-            }
-        });
-
+    public void secondActivity() {
         activity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,5 +42,36 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+    }
+
+    public void saveIntoMyPreferenceFile() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String myName = personName.getText().toString();
+                String myEmail = emailAddress.getText().toString();
+                String myNumber = phoneNumber.getText().toString();
+
+                SharedPreferences.Editor editor = sharedPreferencesFile.edit();
+                editor.putString(My_NAME, myName);
+                editor.putString(My_PHONE, myNumber);
+                editor.putString(My_EMAIL, myEmail);
+                editor.apply();
+                Toast.makeText(MainActivity.this, "Saved! Thanks", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void keepFieldsIntact() {
+        sharedPreferencesFile = getSharedPreferences(My_PREFERENCES_FILE, Context.MODE_PRIVATE);
+        if (sharedPreferencesFile.contains(My_NAME)) {
+            personName.setText(sharedPreferencesFile.getString(My_NAME, ""));
+        }
+        if (sharedPreferencesFile.contains(My_PHONE)) {
+            phoneNumber.setText(sharedPreferencesFile.getString(My_PHONE, ""));
+        }
+        if (sharedPreferencesFile.contains(My_EMAIL)) {
+            emailAddress.setText(sharedPreferencesFile.getString(My_EMAIL, ""));
+        }
     }
 }

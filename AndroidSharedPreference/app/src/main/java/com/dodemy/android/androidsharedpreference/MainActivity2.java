@@ -31,13 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         mName = findViewById(R.id.etName);
         mEmail = findViewById(R.id.etEmail);
         mHome = findViewById(R.id.home);
-        mSharedPreferences = getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
-        if (mSharedPreferences.contains(NAME_KEY)) {
-            mName.setText(mSharedPreferences.getString(NAME_KEY, ""));
-        }
-        if (mSharedPreferences.contains(EMAIL_KEY)) {
-            mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
-        }
+        keepFieldsIntact();
         homeActivity();
     }
 
@@ -77,6 +71,16 @@ public class MainActivity2 extends AppCompatActivity {
                 MainActivity2.this.startActivity(intent);
             }
         });
+    }
+
+    public void keepFieldsIntact() {
+        mSharedPreferences = getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+        if (mSharedPreferences.contains(NAME_KEY)) {
+            mName.setText(mSharedPreferences.getString(NAME_KEY, ""));
+        }
+        if (mSharedPreferences.contains(EMAIL_KEY)) {
+            mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
+        }
     }
 
     @Override
