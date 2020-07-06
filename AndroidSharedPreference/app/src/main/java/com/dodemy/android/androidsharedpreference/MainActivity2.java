@@ -38,14 +38,9 @@ public class MainActivity2 extends AppCompatActivity {
         if (mSharedPreferences.contains(EMAIL_KEY)) {
             mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
         }
-        mHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
-                MainActivity2.this.startActivity(intent);
-            }
-        });
+        homeActivity();
     }
+
     public void Save(View view) {
         String myName = mName.getText().toString();
         String myEmail = mEmail.getText().toString();
@@ -54,14 +49,16 @@ public class MainActivity2 extends AppCompatActivity {
         editor.putString(EMAIL_KEY, myEmail);
         editor.apply();
     }
+
     public void clear(View view) {
         mName = findViewById(R.id.etName);
         mEmail = findViewById(R.id.etEmail);
         mName.setText("");
         mEmail.setText("");
     }
+
     public void Get(View view) {
-        mName =  findViewById(R.id.etName);
+        mName = findViewById(R.id.etName);
         mEmail = findViewById(R.id.etEmail);
         mSharedPreferences = getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
         if (mSharedPreferences.contains(NAME_KEY)) {
@@ -70,6 +67,16 @@ public class MainActivity2 extends AppCompatActivity {
         if (mSharedPreferences.contains(EMAIL_KEY)) {
             mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
         }
+    }
+
+    public void homeActivity() {
+        mHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                MainActivity2.this.startActivity(intent);
+            }
+        });
     }
 
     @Override
