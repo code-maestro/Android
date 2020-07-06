@@ -1,6 +1,7 @@
 package com.dodemy.android.androidsharedpreference;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String My_PHONE = "phoneKey";
     public static final String My_EMAIL = "emailKey";
     EditText personName, emailAddress, phoneNumber;
-    Button saveButton;
+    Button saveButton, activity2;
     SharedPreferences sharedpreferences;
 
     @Override
@@ -25,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         personName = findViewById(R.id.personName);
         emailAddress = findViewById(R.id.emailAddress);
-        phoneNumber = (EditText) findViewById(R.id.phoneNumber);
-        saveButton = (Button) findViewById(R.id.saveButton);
+        phoneNumber = findViewById(R.id.phoneNumber);
+        saveButton = findViewById(R.id.saveButton);
+        activity2 = findViewById(R.id.activity2);
         sharedpreferences = getSharedPreferences(My_PREFERENCES, Context.MODE_PRIVATE);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString(My_EMAIL, myEmail);
                 editor.apply();
                 Toast.makeText(MainActivity.this, "Thanks", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        activity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                MainActivity.this.startActivity(intent);
             }
         });
     }
