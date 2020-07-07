@@ -43,7 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
         editor.putString(NAME_KEY, myName);
         editor.putString(EMAIL_KEY, myEmail);
         editor.apply();
-        Toast.makeText(MainActivity2.this, "Your details are save!", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity2.this, "Your details are saved!", Toast.LENGTH_LONG).show();
     }
 
     public void clear(View view) {
@@ -73,9 +73,9 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                 MainActivity2.this.startActivity(intent);
+                Toast.makeText(MainActivity2.this, "You are are about to go Home Screen", Toast.LENGTH_LONG).show();
             }
         });
-        Toast.makeText(MainActivity2.this, "You are are about to go Home Screen", Toast.LENGTH_LONG).show();
     }
 
     public void keepFieldsIntact() {
