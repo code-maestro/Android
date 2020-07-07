@@ -20,6 +20,15 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
     private ArrayList<DataModel> dataSet;
     private int lastPosition = -1;
 
+
+    // View lookup cache
+    private static class ViewHolder {
+        TextView txtName;
+        TextView txtType;
+        TextView txtVersion;
+        ImageView info;
+    }
+
     public CustomAdapter(ArrayList<DataModel> data, Context context) {
         super(context, R.layout.row_item, data);
         this.dataSet = data;
@@ -73,11 +82,4 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
         return convertView;
     }
 
-    // View lookup cache
-    private static class ViewHolder {
-        TextView txtName;
-        TextView txtType;
-        TextView txtVersion;
-        ImageView info;
-    }
 }
