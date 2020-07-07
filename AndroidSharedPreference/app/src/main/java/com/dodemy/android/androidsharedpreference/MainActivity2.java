@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class MainActivity2 extends AppCompatActivity {
     //PREFERENCE_FILE_NAME is the name of the file where the shared preferences key-value pair is stored.
-    public static final String PREFERENCE_FILE_NAME = "myPref";
+    public static final String PREFERENCE_FILE_NAME = "myPrefName";
     public static final String NAME_KEY = "nameKey";
     public static final String EMAIL_KEY = "emailKey";
     SharedPreferences mSharedPreferences;
@@ -42,6 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
         editor.putString(NAME_KEY, myName);
         editor.putString(EMAIL_KEY, myEmail);
         editor.apply();
+        Toast.makeText(MainActivity2.this, "Your details are save!", Toast.LENGTH_LONG).show();
     }
 
     public void clear(View view) {
@@ -49,6 +51,7 @@ public class MainActivity2 extends AppCompatActivity {
         mEmail = findViewById(R.id.etEmail);
         mName.setText("");
         mEmail.setText("");
+        Toast.makeText(MainActivity2.this, "The fields are cleared!", Toast.LENGTH_LONG).show();
     }
 
     public void Get(View view) {
@@ -61,6 +64,7 @@ public class MainActivity2 extends AppCompatActivity {
         if (mSharedPreferences.contains(EMAIL_KEY)) {
             mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
         }
+        Toast.makeText(MainActivity2.this, "Your details are retrieved", Toast.LENGTH_LONG).show();
     }
 
     public void homeActivity() {
@@ -71,6 +75,7 @@ public class MainActivity2 extends AppCompatActivity {
                 MainActivity2.this.startActivity(intent);
             }
         });
+        Toast.makeText(MainActivity2.this, "You are are about to go Home Screen", Toast.LENGTH_LONG).show();
     }
 
     public void keepFieldsIntact() {
@@ -81,6 +86,7 @@ public class MainActivity2 extends AppCompatActivity {
         if (mSharedPreferences.contains(EMAIL_KEY)) {
             mEmail.setText(mSharedPreferences.getString(EMAIL_KEY, ""));
         }
+        Toast.makeText(MainActivity2.this, "Hurrah, the fields are intact!", Toast.LENGTH_LONG).show();
     }
 
     @Override

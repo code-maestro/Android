@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String My_PREFERENCES_FILE = "MyPref";
+    public static final String My_PREFERENCES_FILE = "MyPrefName";
     public static final String My_NAME = "nameKey";
     public static final String My_PHONE = "phoneKey";
     public static final String My_EMAIL = "emailKey";
@@ -73,5 +73,6 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferencesFile.contains(My_EMAIL)) {
             emailAddress.setText(sharedPreferencesFile.getString(My_EMAIL, ""));
         }
+        Toast.makeText(MainActivity.this, "Hurrah, your fields are intact!", Toast.LENGTH_SHORT).show();
     }
 }
