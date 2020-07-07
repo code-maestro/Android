@@ -73,7 +73,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity2.this, MainActivity.class);
                 MainActivity2.this.startActivity(intent);
-                Toast.makeText(MainActivity2.this, "You are are about to go Home Screen", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity2.this, "You're at Home Screen", Toast.LENGTH_LONG).show();
             }
         });
     }
